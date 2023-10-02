@@ -1,12 +1,18 @@
 import { useEffect, useState } from "react"
 import { CardWidget } from '../CardWidget';
 
-const Counter = () => {
-  const [count, setCount] = useState<number>(0);
+interface IProps {
+  stock: number;
+  initial: number;
+}
+
+const Counter = (props: IProps) => {
+  const { stock, initial } = props;
+  const [count, setCount] = useState<number>(initial);
 
 
   const handleClick = () => {
-    if (count < 4){
+    if (count < stock){
       setCount((value) => value + 1)
     }
   }

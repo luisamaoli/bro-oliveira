@@ -14,17 +14,17 @@ const ItemListContainer = ({ name }: IProps) => {
       <div className="flex items-center space-x-4">
         <div className="flex flex-col items-center">
           <Card name= {require("../../img/bordada.png")}/>
-          <Counter />
+          <Counter stock={10} initial={1}/>
         </div>
 
         <div className="flex flex-col items-center">
           <Card name= {require("../../img/snakeboots.png")}/>
-          <Counter />
+          <Counter stock={5} initial={0}/>
         </div>
 
         <div className="flex flex-col items-center">
           <Card name= {require("../../img/croco.png")}/>
-          <Counter />
+          <Counter stock={12} initial={2}/>
         </div>
       </div>
     </div>
