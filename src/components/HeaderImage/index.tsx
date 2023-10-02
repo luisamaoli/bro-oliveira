@@ -1,6 +1,8 @@
 const HeaderImage = () => {
   return (
-    <img src='../img/header.png' alt="Logo" />
+    <div className='w-20 h-20'>
+      <img className='h-full object-cover' src={require("../../img/header.png")} alt="" />
+    </div>
   )
 }
 

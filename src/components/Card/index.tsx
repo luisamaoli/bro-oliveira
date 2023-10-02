@@ -1,6 +1,10 @@
-const Card = () => {
+interface IProps {
+  name: string;
+}
+
+const Card = ({ name }: IProps) => {
   return(
-    <h1>Luisa</h1>
+    <img className='w-1/2 h-auto max-w-full' src={name} alt="" />
   )
 }
 
