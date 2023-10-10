@@ -4,7 +4,7 @@ const dados = [{"nome": "Luisa"}, {"nome": "Luana"}, {"nome": "Liz"}]
 
 interface ICard{
   nome: string;
-  idade: number;
+  // idade: number;
 }
 
 const Card = () => {
