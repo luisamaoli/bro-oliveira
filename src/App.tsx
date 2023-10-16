@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Hero } from './components/Hero';
 import { NavBar } from './components/NavBar';
 import { ItemListContainer } from './components/ItemListContainer';
 import './App.css';
-import { Card } from './components/Card';
 import { Item } from './components/Item';
+
+import { Card } from './components/Card';
 
 function App() {
   return (
