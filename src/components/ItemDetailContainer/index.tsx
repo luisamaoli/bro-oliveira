@@ -1,23 +1,24 @@
 import React, { useEffect, useState } from 'react';
+import items from '../ItemDetail';
+import { useParams } from 'react-router-dom';
 
-// interface funciona como um contracts
-interface IProps {
-  item: Array<{
-    id: number;
-    title: string;
-    price: number;
-    pictureUrl: string;
-  }>;
+interface Item {
+  id: number;
+  title: string;
+  description: string;
+  price: number;
+  pictureUrl: string;
+  isConfigurable: boolean;
 }
 
+const ItemDetailContainer = () => {
+  const { id } = useParams();
+  const [item_delayed, setItem] = useState<Item[]>([]);
 
-const ItemDetailContainer = ({ item }: IProps) => {
-  const [item_delayed, setItem] = useState<IProps["item"]>([]);
-
-  const hadleGetItem = (): Promise<IProps["item"]>  => {
+  const hadleGetItem = (): Promise<Item[]>  => {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        resolve(item);
+        resolve(items);
       }, 2000);
     });
   };
@@ -25,23 +26,28 @@ const ItemDetailContainer = ({ item }: IProps) => {
   useEffect(() => {
     const onMount = async () => {
       try {
+        if (id === undefined) {
+          return <div>ID do produto não fornecido.</div>;
+        }
+        const productId = parseInt(id, 10);
         const result = await hadleGetItem();
-        setItem(result);
+        const selectedItem = result.find((item) => item.id === productId);
+        setItem(selectedItem ? [selectedItem] : []);
       } catch (error) {
         console.log(error);
       }
     };
     onMount();
-  }, []);
+  }, [id]);
 
   return (
-    <div>
+    <div className="flex items-center justify-center">
+      <h1>Conheca mais sobre o produto:</h1>
       {item_delayed.map((item) => (
       <div key={item.id}>
-        <p>ID: {item.id}</p>
+        <img className='w-1/2' src={require(`.//img/${item.title}.png`)} alt="" />
         <p>Title: {item.title}</p>
         <p>Price: {item.price}</p>
-        <img src={item.pictureUrl} alt={item.title} />
       </div>
     ))}
     </div>
