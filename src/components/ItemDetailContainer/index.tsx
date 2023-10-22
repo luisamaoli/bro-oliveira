@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import items from '../ItemDetail';
+import items_details from '../ItemDetail';
 import { useParams } from 'react-router-dom';
 
-interface Item {
+interface Item_Detail {
   id: number;
   title: string;
   description: string;
@@ -13,12 +13,12 @@ interface Item {
 
 const ItemDetailContainer = () => {
   const { id } = useParams();
-  const [item_delayed, setItem] = useState<Item[]>([]);
+  const [item_delayed, setItem] = useState<Item_Detail[]>([]);
 
-  const hadleGetItem = (): Promise<Item[]>  => {
+  const hadleGetItem = (): Promise<Item_Detail[]>  => {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        resolve(items);
+        resolve(items_details);
       }, 2000);
     });
   };
