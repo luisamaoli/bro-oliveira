@@ -1,8 +1,8 @@
 import { Hero } from './components/Hero';
 import { ItemListContainer } from './components/ItemListContainer';
 import './App.css';
-
 import { Card } from './components/Card';
+import { Input } from './components/Input';
 
 function App() {
   return (
