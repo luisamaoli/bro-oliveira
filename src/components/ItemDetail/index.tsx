@@ -5,6 +5,7 @@ const items_details = [
     "description": "Totalmente bordada, colorida na medida certa para trazer o equilíbrio entre ousadia, autenticidade e um ar clássico que a gente não abre mão.",
     "price": 534.00,
     "pictureUrl": ".//img/bordada.png",
+    "stock": 5,
     "isConfigurable": true
   },
   {
@@ -13,6 +14,7 @@ const items_details = [
     "description": "Monte looks de impacto ou equilibre peças básicas com essa western com estampa de cobra. Um verdadeiro item desejo, capaz de tirar qualquer outfit do óbvio, dos mais básicos até os mais elaborados.",
     "price": 554.00,
     "pictureUrl": ".//img/snakeboots.png",
+    "stock": 7,
     "isConfigurable": true
   },
   {
@@ -21,6 +23,7 @@ const items_details = [
     "description": "Um toque sutil que faz toda a diferença nos seus looks. Um vestido tubinho, uma fenda elegante, uma t-shirt de banda? Pode apostar na nossa bota texana cano baixo para arrematar seus outfits com muita personalidade.",
     "price": 564.00,
     "pictureUrl": ".//img/croco.png",
+    "stock": 9,
     "isConfigurable": true
   }
 ];

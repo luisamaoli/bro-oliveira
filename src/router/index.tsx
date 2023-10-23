@@ -8,6 +8,7 @@ import { useState } from 'react';
 import { get } from '../services/api.service';
 import { List } from '../components/List';
 import { IRepo } from '../interface/repos.interface';
+import { BuyerButton } from '../components/BuyerButton';
 
 const Routers = () => {
   const [listaRepo, setlistaRepo] = useState<IRepo[]>([])
@@ -29,6 +30,7 @@ const Routers = () => {
       <Routes>
         <Route path='/' element={<ItemListContainer name='Escolha as suas favoritas' />} />
         <Route path ='/item/:id' element={<ItemDetailContainer />} />
+        <Route path ='/cart' />
       </Routes>
     </BrowserRouter>
   )

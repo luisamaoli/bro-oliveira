@@ -1,7 +1,9 @@
+import { Link } from "react-router-dom"
+
 const BuyerButton = () => {
   return(
     <div>
-    <button className="mt-2 py-0.5 px-0.5 rounded hover:bg-pink-600 text-xs">Comprar</button>
+      <Link to={`/cart`}><button className="mt-2 center rounded hover:bg-violet-600 text-base justify-center">Comprar</button></Link>
     </div>
   )
 }

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import items_details from '../ItemDetail';
 import { useParams } from 'react-router-dom';
+import { Counter } from '../Counter';
+import { BuyerButton } from '../BuyerButton';
 
 interface Item_Detail {
   id: number;
@@ -8,6 +10,7 @@ interface Item_Detail {
   description: string;
   price: number;
   pictureUrl: string;
+  stock: number;
   isConfigurable: boolean;
 }
 
@@ -42,12 +45,14 @@ const ItemDetailContainer = () => {
 
   return (
     <div className="flex items-center justify-center">
-      <h1>Conheca mais sobre o produto:</h1>
       {item_delayed.map((item) => (
-      <div key={item.id}>
+        <div key={item.id}>
+        <h1>Conheca mais sobre o produto:</h1>
+        <p>{item.title}</p>
         <img className='w-1/2' src={require(`.//img/${item.title}.png`)} alt="" />
-        <p>Title: {item.title}</p>
         <p>Price: {item.price}</p>
+        <Counter stock={item.stock} initial={0}/>
+        <BuyerButton/>
       </div>
     ))}
     </div>

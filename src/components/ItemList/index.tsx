@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Counter } from "../Counter";
 import { Link } from 'react-router-dom'
 import items from '../Item';
+import { BuyerButton } from "../BuyerButton";
 
 interface Item {
   id: number;
@@ -43,7 +44,8 @@ const ItemList = () => {
           <img className='w-1/2 h-auto max-w-full' src={require(`.//img/${item.title}.png`)} alt={item.title} />
           <h1>Price: {item.price}</h1>
           <Counter stock={item.stock} initial={0}/>
-          <Link to={`/item/1`}><button className="mt-2 py-0.5 px-0.5 rounded hover:bg-pink-600">Saiba Mais</button></Link>
+          <Link to={`/item/${item.id}`}><button className="mt-2 py-0.5 px-0.5 rounded hover:bg-pink-600">Saiba Mais</button></Link>
+          <BuyerButton/>
         </div>
       ))}
     </div>

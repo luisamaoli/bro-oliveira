@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react"
-import { CardWidget } from '../CardWidget';
+import { useState } from "react"
 
 interface IProps {
   stock: number;
@@ -17,17 +16,13 @@ const Counter = (props: IProps) => {
     }
   }
 
-  // useEffect(()=>{
-  //   return () => {
-  //     console.log('Saiu')
-  //   }
-  // }, [])
-
   return(
     <div>
       {/* usando a arrow function dentro de SetCount para que o valor esteja sempre atualizado */}
-      <button onClick={handleClick} className="mt-2 py-0.5 px-0.5 rounded hover:bg-pink-600 text-xs">Comprar</button>
-      <h1 className="mt-2 py-0.5 px-0.5 rounded hover:bg-pink-600 text-xs">{count}</h1>
+      <section className='flex'>
+        <h1 className="mt-2 py-0.5 px-1.5 rounded hover:bg-pink-600 text-sm">{count}</h1>
+        <button onClick={handleClick} className="mt-2 py-0.5 px-3.5 rounded hover:bg-pink-600 text-sm">Adicionar ao carrinho</button>
+      </section>
     </div>
   )
 }
