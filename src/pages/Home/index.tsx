@@ -6,7 +6,6 @@ import { get } from "../../services/api.service";
 import { useState } from "react";
 import { IUser } from "../../interface/user.interface";
 import { useNavigate } from "react-router-dom";
-import { Componente01 } from "../../components/Componente01";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -27,7 +26,6 @@ const Home = () => {
   return(
     <div>
       <NavBar nameCompany='Fairies Wear Boots' />
-      <Componente01/>
       <section className='flex'>
         <Input value={inputValue} onChange={setInputValue}/>
         <SubmitButton handleClick={handleClick}/>
