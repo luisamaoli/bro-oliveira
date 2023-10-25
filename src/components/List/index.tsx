@@ -1,22 +1,20 @@
-import { IRepo } from "../../interface/repos.interface"
-
 interface IProps{
-  listaRepo: IRepo[]
+  id: number;
+  image: string;
+  title: string;
+  // onClick eh um callback eu to avisando pro componente pai alguma coisa, opcional coloca ?
+  onClick?: () => void;
 }
 
 
-const List = ({ listaRepo }: IProps) => {
+const List = ({ id, image, title, onClick }: IProps) => {
   return(
-    <div>
-      {listaRepo.map(repo =>(
-        <div className="bg-white m-4 p-5 flex items-center" key={repo.id}>
-          <img className="rounded-full h-20"src={repo.owner.avatar_url} alt="" />
-          <div className="ml-6">
-            <h1>{repo.full_name}</h1>
-            <h1>{repo.owner.avatar_url}</h1>
-          </div>
-        </div>
-      ))}
+    // esse && no onclick eh um if, se existir o onclick pega ele
+    <div className="bg-white m-4 p-5 flex items-center" key={id} onClick={onClick && onClick}>
+      <img className="rounded-full h-20"src={image} alt="" />
+      <div className="ml-6">
+        <h1>{title}</h1>
+      </div>
     </div>
   )
 }
