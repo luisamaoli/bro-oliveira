@@ -4,20 +4,20 @@ import { Componente02 } from "../Componente02"
 
 const Componente01 = () => {
   // receita de bolo do carrinhooooooo
-  const [numero, setNumero] = useState(1)
-  const {setTitle, title, teste} = useCart();
+  // const [numero, setNumero] = useState(1)
+  // const {setTitle, title, teste} = useCart();
 
-  const hadleMudarNome = () => {
-    teste(1);
-    setTitle(title + numero.toString());
-    setNumero(previous => previous + 1);
-  }
+  // const hadleMudarNome = () => {
+  //   teste(1);
+  //   setTitle(title + numero.toString());
+  //   setNumero(previous => previous + 1);
+  // }
 
   return(
     <>
       <h1>Componente01</h1>
-      <Componente02></Componente02>
-      <button onClick={hadleMudarNome}>Mudar o nome</button>
+      {/* <Componente02></Componente02>
+      <button onClick={hadleMudarNome}>Mudar o nome</button> */}
     </>
   )
 }

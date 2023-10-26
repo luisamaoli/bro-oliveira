@@ -52,7 +52,7 @@ const ItemDetailContainer = () => {
         <img className='w-1/2' src={require(`.//img/${item.title}.png`)} alt="" />
         <p>Price: {item.price}</p>
         <Counter stock={item.stock} initial={0}/>
-        <BuyerButton/>
+        <BuyerButton item={item}/>
       </div>
     ))}
     </div>

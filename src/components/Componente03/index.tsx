@@ -1,10 +1,21 @@
 import { useCart } from "../../contexts/CartContext"
+import { IProduct } from "../../interface/product.interface";
 
 const Componente03 = () => {
-    const {title} = useCart();
-    return(
-        <h1>Componente03 {title}</h1>
-    )
+  const { items } = useCart();
+
+  return (
+    <div>
+      <h1>Cart Items:</h1>
+      <ul>
+        {items.map((item: IProduct) => (
+          <li key={item.id}>
+            {item.title} - Price: ${item.price}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
   }
 
   export { Componente03 }

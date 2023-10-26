@@ -49,6 +49,6 @@ const CartProvider = ({ children }: ICartProviderProps) => {
     </CartContext.Provider>
   )
 }
-const useCart = () => useContext(CartContext);
+const useCartt = () => useContext(CartContext);
 
-export { CartProvider, useCart }
+export { CartProvider, useCartt }
