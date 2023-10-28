@@ -8,16 +8,17 @@ import { IUser } from "../../interface/user.interface";
 import { useNavigate } from "react-router-dom";
 import { Componente01 } from "../../components/Componente01";
 import { Componente03 } from "../../components/Componente03";
+import { Loading } from "../../components/Loading";
+import { useLoading } from "../../contexts/LoadingContext";
+import { useGithub } from "../../contexts/GithubContext";
 
 const Home = () => {
   const navigate = useNavigate();
-  const [listaUser, setListUser] = useState<IUser[]>([])
+  const { getUsersGithub, listUser} = useGithub();
   const [inputValue, setInputValue] = useState('');
 
   const handleClick = async () => {
-    const lista = await get(`users/${inputValue}`)
-    // previous pega o valor antigo e junta com o novo lista.data e insere tudo em um so
-    setListUser(previous => [...previous, lista.data])
+    await getUsersGithub(inputValue)
   }
 
   const handleNavigateRepos = (userName: string) => {
@@ -34,11 +35,12 @@ const Home = () => {
         <SubmitButton handleClick={handleClick}/>
       </section>
       <section>
-        {listaUser.map(item => (
+        {listUser.map(item => (
         <List key={item.id} id={item.id} image={item.avatar_url} title={item.login} onClick={() => handleNavigateRepos(item.login)}/>
         ))}
       </section>
     </div>
+
   )
 }
 

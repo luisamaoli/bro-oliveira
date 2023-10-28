@@ -1,18 +1,18 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom"
-import { get } from "../../services/api.service";
 import { List } from "../../components/List";
-import { IRepo } from "../../interface/repos.interface";
+import { useGithub } from "../../contexts/GithubContext";
 
 const Repos = () => {
-  const [listRepo, setListRepo] = useState<IRepo[]>();
   const { username } = useParams();
+  const { getReposGithub, listRepos} = useGithub();
 
   // vou usar useEffect pq quando minha pagina estiver carregando eu quero chamar meu endpoint
   useEffect(() => {
     const onMount = async () => {
-      const result = await get(`users/${username}/repos`);
-      setListRepo(result.data)
+      if (username) {
+        getReposGithub(username);
+      }
     }
     onMount();
   }, [])
@@ -21,7 +21,7 @@ const Repos = () => {
     <div className="App container pt-16">
       <h1 className="text-6xl font-bold md:w-1/2">Explore os repositorios do Github</h1>
       <section>
-      {listRepo?.map(item =>(
+      {listRepos?.map(item =>(
         <List key={item.id} id={item.id} image={item.owner.avatar_url} title={item.full_name}/>
       ))}
       </section>
