@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import { IProduct } from "../../interface/product.interface";
 import { useCart } from "../../contexts/CartContext";
+import { useCount } from "../../contexts/CountContext";
 
 interface IProps{
   item: IProduct;
@@ -8,9 +9,12 @@ interface IProps{
 
 const BuyerButton = ({item}: IProps) => {
   const {addItem} = useCart();
+  const {resultCount, resetCount} = useCount();
 
   const AddCartItem = () => {
-    addItem(item, 1);
+    const count = resultCount();
+    addItem(item, count);
+    resetCount();
   }
 
   return(

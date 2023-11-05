@@ -1,6 +1,5 @@
 import './style.css';
 import { HeaderImage } from '../HeaderImage';
-import { Counter } from '../Counter';
 import { CardWidget } from '../CardWidget';
 
 // interface funciona como um contracts
@@ -18,12 +17,10 @@ const NavBar = ({ nameCompany }: IProps) => {
         <span className="ml-2 text-sm">{nameCompany}</span>
       </div>
       <ul className='flex items-center'>
-        <li className='mx-2'>A Marca</li>
-        <li className='mx-2'>Cano Curto</li>
-        <li className='mx-2'>Cano Longo</li>
-        <li className='mx-2'>Clássicas</li>
-        <li className='mx-2'>Colecionáveis</li>
-        <li className='mx-2'><button>Cadastrar/Login</button></li>
+        <li className='mx-2'>A Historia</li>
+        <li className='mx-2'>Todos</li>
+        <li className='mx-2'>Sem Gluten</li>
+        <li className='mx-2'>Sem Lactose</li>
         <div>
           <CardWidget />
         </div>

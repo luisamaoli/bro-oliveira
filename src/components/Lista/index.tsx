@@ -12,7 +12,7 @@ const Lista = () => {
   useEffect(() => {
     const onMount = async() => {
       const result = await fetch('https://jsonplaceholder.typicode.com/posts');
-      setlistaTitulos(result);
+      // setlistaTitulos(result.status);
     }
     onMount();
   }, [])
@@ -20,7 +20,7 @@ const Lista = () => {
   return(
     <div>
       {listaTitulos.map(item => (
-        title={item.title}
+        <div key={item.title}></div>
       ))}
     </div>
 

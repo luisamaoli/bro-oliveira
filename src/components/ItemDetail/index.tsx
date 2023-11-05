@@ -1,31 +1,54 @@
-const items_details = [
-  {
-    "id": 1,
-    "title": "bordada",
-    "description": "Totalmente bordada, colorida na medida certa para trazer o equilíbrio entre ousadia, autenticidade e um ar clássico que a gente não abre mão.",
-    "price": 534.00,
-    "pictureUrl": ".//img/bordada.png",
-    "stock": 5,
-    "isConfigurable": true
-  },
-  {
-    "id": 2,
-    "title": "snakeboots",
-    "description": "Monte looks de impacto ou equilibre peças básicas com essa western com estampa de cobra. Um verdadeiro item desejo, capaz de tirar qualquer outfit do óbvio, dos mais básicos até os mais elaborados.",
-    "price": 554.00,
-    "pictureUrl": ".//img/snakeboots.png",
-    "stock": 7,
-    "isConfigurable": true
-  },
-  {
-    "id": 3,
-    "title": "croco",
-    "description": "Um toque sutil que faz toda a diferença nos seus looks. Um vestido tubinho, uma fenda elegante, uma t-shirt de banda? Pode apostar na nossa bota texana cano baixo para arrematar seus outfits com muita personalidade.",
-    "price": 564.00,
-    "pictureUrl": ".//img/croco.png",
-    "stock": 9,
-    "isConfigurable": true
-  }
-];
+import { doc, getDoc, getFirestore } from "firebase/firestore";
+import { IProduct } from "../../interface/product.interface";
+import { useEffect, useState } from "react";
+import { Counter } from "../Counter";
+import { Loading } from "../Loading";
+import { BuyerButton } from "../BuyerButton";
 
-export default items_details;
+interface IProps{
+  itemId: string;
+}
+
+
+const ItemDetail = ({itemId}: IProps) => {
+  const [item, setItem] = useState<IProduct>();
+
+  useEffect(() => {
+    const onMount = async () => {
+      const db = getFirestore();
+      const itemRefCollection = doc(db, "items", itemId);
+      const resp = await getDoc(itemRefCollection)
+      const itemData = resp.data() as IProduct;
+      setItem(itemData);
+    }
+    onMount();
+  }, [itemId])
+
+  return(
+    <div className="">
+      <h1 className="text-base">Conheca mais sobre o produto:</h1>
+      {item ? (
+        <div className="flex">
+          <section className="w-1/3">
+            <img className='w-full rounded-lg' src={item.pictureId} alt={item.title} />
+          </section>
+          <section className="w-2/3 flex items-center">
+            <div className="text-center pl-6">
+              <p className="text-sm">{item.title}</p>
+              <p className="text-xs">{item.description}</p>
+              <p className="text-sm">Price: R${item.price}</p>
+              <div className="text-center pl-6">
+                <Counter stock={item.stock}/>
+                <BuyerButton item={item}/>
+              </div>
+            </div>
+          </section>
+        </div>
+      ) : (
+        <Loading/>
+      )}
+    </div>
+  );
+};
+
+export { ItemDetail }

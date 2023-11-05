@@ -1,4 +1,4 @@
-import { ItemList } from "../ItemList";
+import { ItemsList } from "../ItemsList";
 
 // interface funciona como um contracts
 interface IProps {
@@ -10,7 +10,7 @@ const ItemListContainer = ({ name }: IProps) => {
   return(
     <div className="container mx-auto py-10 text-6xl">
       <h1 className="text-3xl font-bold mb-4">{name}</h1>
-      <div><ItemList /></div>
+      <div><ItemsList /></div>
     </div>
     )
   }

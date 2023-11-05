@@ -2,17 +2,14 @@ import { NavBar } from "../../components/NavBar";
 import { Input } from "../../components/Input";
 import { SubmitButton } from "../../components/SubmitButton";
 import { List } from "../../components/List";
-import { get } from "../../services/api.service";
-import { useState } from "react";
-import { IUser } from "../../interface/user.interface";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Componente01 } from "../../components/Componente01";
-import { Componente03 } from "../../components/Componente03";
-import { Loading } from "../../components/Loading";
-import { useLoading } from "../../contexts/LoadingContext";
 import { useGithub } from "../../contexts/GithubContext";
+import { doc, getDoc, getFirestore } from 'firebase/firestore'
+import { IProduct } from "../../interface/product.interface";
 
 const Home = () => {
+  const [items, setItems] = useState<IProduct>();
   const navigate = useNavigate();
   const { getUsersGithub, listUser} = useGithub();
   const [inputValue, setInputValue] = useState('');
@@ -25,14 +22,25 @@ const Home = () => {
     navigate(`/repos/${userName}`)
   }
 
+  // uso o useEffect pq quero fazer essa chamada assim que a tela carregar
+  useEffect(() => {
+
+    const onMount = async () => {
+      const db = getFirestore();
+      const itemsRef = doc(db, "items", "K8GQQjGhvu6wKdcnUo0I");
+      const resp = await getDoc(itemsRef)
+      setItems(resp.data() as IProduct)
+    }
+    onMount();
+  }, [])
+
 
   return(
     <div>
-      <NavBar nameCompany='Fairies Wear Boots' />
-      <Componente03/>
-      <section className='flex'>
-        <Input value={inputValue} onChange={setInputValue}/>
-        <SubmitButton handleClick={handleClick}/>
+      <NavBar nameCompany='ZeroGL Bakery' />
+      <section className='flex container'>
+        {/* <Input value={inputValue} onChange={setInputValue}/>
+        <SubmitButton handleClick={handleClick}/> */}
       </section>
       <section>
         {listUser.map(item => (
