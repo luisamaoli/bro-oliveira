@@ -4,7 +4,6 @@ import { Routers } from './router/index'
 import { CartProvider } from './contexts/CartContext';
 import { LoadingProvider } from './contexts/LoadingContext';
 import { Loading } from './components/Loading';
-import { GithubProvider } from './contexts/GithubContext';
 import { initializeApp } from "firebase/app";
 import { CountProvider } from './contexts/CountContext';
 
@@ -26,13 +25,11 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <LoadingProvider>
-    <GithubProvider>
       <CountProvider>
         <CartProvider>
           <Loading/>
           <Routers />
         </CartProvider>
       </CountProvider>
-    </GithubProvider>
   </LoadingProvider>
 );

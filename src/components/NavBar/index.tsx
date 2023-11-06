@@ -1,6 +1,6 @@
-import './style.css';
 import { HeaderImage } from '../HeaderImage';
 import { CardWidget } from '../CardWidget';
+import { Link } from 'react-router-dom';
 
 // interface funciona como um contracts
 interface IProps {
@@ -14,13 +14,11 @@ const NavBar = ({ nameCompany }: IProps) => {
     <nav className='w-full h-20 flex justify-between items-center p-5 bg-white shadow-xl'>
       <div className='flex items-center'>
         <HeaderImage/>
-        <span className="ml-2 text-sm">{nameCompany}</span>
+        <Link to={`/`}><button className="ml-2 mt-2 mr-4 center rounded hover:bg-yellow-50 text-base justify-center">{nameCompany}</button></Link>
       </div>
       <ul className='flex items-center'>
-        <li className='mx-2'>A Historia</li>
-        <li className='mx-2'>Todos</li>
-        <li className='mx-2'>Sem Gluten</li>
-        <li className='mx-2'>Sem Lactose</li>
+        <Link to={`/historia`}><button className="mt-2 mr-4 center rounded hover:bg-yellow-50 text-base justify-center">A Historia</button></Link>
+        <Link to={`/catalogo`}><button className="mt-2 mr-4 center rounded hover:bg-yellow-50 text-base justify-center">Todos os Produtos</button></Link>
         <div>
           <CardWidget />
         </div>

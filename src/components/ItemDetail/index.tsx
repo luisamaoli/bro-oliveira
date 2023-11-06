@@ -37,10 +37,12 @@ const ItemDetail = ({itemId}: IProps) => {
               <p className="text-sm">{item.title}</p>
               <p className="text-xs">{item.description}</p>
               <p className="text-sm">Price: R${item.price}</p>
-              <div className="text-center pl-6">
-                <Counter stock={item.stock}/>
-                <BuyerButton item={item}/>
+              <div className="flex items-center justify-center">
+                <div className="text-center pl-3">
+                  <Counter stock={item.stock} />
+                </div>
               </div>
+                  <BuyerButton item={item} />
             </div>
           </section>
         </div>

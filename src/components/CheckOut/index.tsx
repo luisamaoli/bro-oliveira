@@ -1,7 +1,8 @@
-import { addDoc, collection, getFirestore, doc, setDoc } from "firebase/firestore";
+import { addDoc, collection, getFirestore } from "firebase/firestore";
 import { useState } from "react";
 import { useCart } from "../../contexts/CartContext";
 import { firebase_app } from "../..";
+import { Link } from 'react-router-dom';
 
 const CheckOut = () => {
   const { items } = useCart();
@@ -73,8 +74,13 @@ const CheckOut = () => {
         </div>
       ))}
       <p>Total: R${calculateTotal()}</p>
-      <button onClick={onAdd}>Submit Order</button>
-      {orderId && <p>Seu pedido foi confirmado, acompanhe ele por esse numero de rastreio: {orderId}</p>}
+      <button onClick={onAdd} className="mt-2 py-0.5 px-0.5 rounded hover:bg-pink-600">Submit Order</button>
+      {orderId && (
+        <div>
+          <p>Seu pedido foi confirmado, acompanhe ele por esse numero de rastreio: {orderId}</p>
+          <Link to={'/sucesso_compra'} className="mt-2 py-0.5 px-0.5 rounded hover:bg-yellow-600">Confirme seu pedido</Link>
+        </div>
+      )}
     </div>
   );
 };

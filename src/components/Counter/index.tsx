@@ -25,8 +25,7 @@ const Counter = (props: IProps) => {
 
   return(
     <div>
-      {/* usando a arrow function dentro de SetCount para que o valor esteja sempre atualizado */}
-      <section className='flex items-center'>
+      <section className='flex'>
         <button onClick={handleClickDeduct} className="mt-2 py-0.5 px-3.5 rounded hover:bg-pink-600 text-sm">-</button>
         <h1 className="mt-2 py-0.5 px-1.5 rounded hover:bg-pink-600 text-sm">{resultCount()}</h1>
         <button onClick={handleClickAdd} className="mt-2 py-0.5 px-3.5 rounded hover:bg-pink-600 text-sm">+</button>

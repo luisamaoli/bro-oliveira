@@ -5,12 +5,14 @@ interface ICart {
   items: IProduct[];
   addItem: (item: IProduct, quantity: number) => void;
   removeItem: (item: IProduct, quantity: number) => void;
+  clearCart: () => void;
 }
 
 export const CartContext = createContext<ICart>({
   items: [],
   addItem: (item: IProduct, quantity: number) => {},
   removeItem: (item: IProduct, quantity: number) => {},
+  clearCart: () => {}
 });
 
 interface ICartProviderProps {
@@ -36,9 +38,9 @@ const CartProvider = ({ children }: ICartProviderProps) => {
     }));
   };
 
-  // const removeItem = (item: IProduct, quantity: number) => {
-  //   setItems(prevItems => prevItems.filter(existingItem => existingItem !== item));
-  // };
+  const clearCart = () => {
+    setItems([]);
+  };
 
   return (
     <CartContext.Provider
@@ -46,6 +48,7 @@ const CartProvider = ({ children }: ICartProviderProps) => {
         items,
         addItem,
         removeItem,
+        clearCart,
       }}
     >
       {children}
